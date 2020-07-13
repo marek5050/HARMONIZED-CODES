@@ -1,24 +1,18 @@
-from datetime import datetime
-
 import pandas as pd
-import pytz
+from io import StringIO
 
+d2=StringIO(db)
 def main(d):
-    unlocode = d.get("unlocode")
-    city = d.get("city")
-    names = "city,country_code,subdivision,unlocode,location,asciiname,coordinates,latitude,longitude,timezone,modification date".split(
-        ",")
-    arr = [x.split(",", maxsplit=len(names)-1) for x in db.split('\n')[1:]]
-    frame = pd.DataFrame(arr, columns=names)
+    hscode = d.get("hscode")
+    exact = d.get("exact",True)
+    names = "Classification,Code,Description,Code Parent,Level,isLeaf".split(",")
+    # arr = [x.split(",", maxsplit=len(names)-1) for x in db.split('\n')[1:]]
+    frame = pd.pd.read_csv(d2, columns=names, sep=",")
     resp = {"result": []}
 
-    if unlocode:
-        resp["result"] = frame[frame['unlocode'].str.contains(unlocode) == True][:20].to_dict("records")
-    elif city:
-        resp["result"] = frame[frame['terminal_code'].str.contains(city) == True][:20].to_dict("records")
-
-    for item in resp["result"]:
-        tz = pytz.timezone(item.get("timezone"))
-        item["current_time"]=datetime.now(tz).isoformat(sep="T",timespec='minutes')
+    if exact:
+        resp["result"] = frame[frame['Code']==hscode][-1:].to_dict("records")
+    else:
+        resp["result"] = frame[frame['Code'].str.contains(hscode) == True][:20].to_dict("records")
 
     return resp

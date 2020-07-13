@@ -7,7 +7,7 @@ invocation_error=0
 if [ -z ${APIKEY+x} ]; then echo 'Error: Environment variable APIKEY is undefined.'; invocation_error=1; fi
 # set optional Cloud Foundry variables if they are not set
 # - CF_API: IBM Cloud API endpoint (default to US-South region)
-if [ -z ${CF_API+x} ]; then export CF_API='https://api.ng.bluemix.net'; fi
+if [ -z ${CF_API+x} ]; then export CF_API='https://api.us-south.cf.cloud.ibm.com'; fi
 
 if [ ${invocation_error} -eq 1 ]; then echo 'Something went wrong, check for previous errors.'; exit 1; fi
 
@@ -16,4 +16,4 @@ if [ ${invocation_error} -eq 1 ]; then echo 'Something went wrong, check for pre
 ./Bluemix_CLI/bin/ibmcloud login -a $CF_API --apikey $APIKEY
 ./Bluemix_CLI/bin/ibmcloud target -o $CF_ORG -s $CF_SPACE
 ./Bluemix_CLI/bin/ibmcloud plugin install cloud-functions -r Bluemix
-./Bluemix_CLI/bin/ibmcloud fn action update unlocode_timezone --kind python-jessie:3 ./endpoint/main.py
+./Bluemix_CLI/bin/ibmcloud fn action update harmonized_codes --kind python-jessie:3 ./endpoint/main.py
