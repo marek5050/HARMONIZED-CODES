@@ -4,7 +4,7 @@
 The repository contains an extract of the [UN Harmonized Codes dataset](https://unstats.un.org/unsd/tradekb/Knowledgebase/50039/UN-Comtrade-Reference-Tables). 
 
 ```
-UN Comtrade Reference Tables​
+UN Comtrade Reference Tables
 Trade FLow (Regime) Codes
 1	Imports
 2	Exports
