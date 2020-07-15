@@ -7,7 +7,7 @@ def main(d):
     exact = d.get("exact",True)
     names = "Classification,Code,Description,Code Parent,Level,isLeaf".split(",")
     # arr = [x.split(",", maxsplit=len(names)-1) for x in db.split('\n')[1:]]
-    frame = pd.pd.read_csv(d2, columns=names, sep=",")
+    frame = pd.read_csv(d2, names=names, sep=",")
     resp = {"result": []}
 
     if exact:
