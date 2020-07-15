@@ -58,7 +58,7 @@ End Valid Year:	Year ending for country code validation
 *UNECE*
 https://unstats.un.org/unsd/tradekb/Knowledgebase/50039/UN-Comtrade-Reference-Tables
 
-Last updated:  Wed Jul 15 14:03:42 EDT 2020
+Last updated:  Wed Jul 15 18:05:35 UTC 2020
 ```
 "Classification","Code","Description","Code Parent","Level","isLeaf"
 "BE","1","Food and beverages","TOTAL","1","0"
